@@ -29,19 +29,19 @@ median(data$Age)
 The mode is the most frequently occurring value among all of the observations in a sample.  Some distributions have more than one mode.  A distribution with one mode is called unimodal; two modes, bimodal; three modes, trimodal.
 
 ```{r comment = NA}
-# Calcuate arithmetic mean
+# Calcuate mode
 library(DescTools)
 Mode(data$Age)
 ```
 
 ## Geometric mean
-The geometric mean $\bar{logx}$ is the central number in a geometric progression such as exponential growth.  The geometric mean is defined as the nth root of the product of n numbers:
+The geometric mean ($\bar{logx}$) is the central number in a geometric progression such as exponential growth.  The geometric mean is defined as the ${n}$th root of the product of ${n}$ numbers:
 
 $$\bar{logx}=\frac{\sum_{i=1}^nlogx_{i}}{n}$$
 Any base can be used to compute the logarithms for the geometric mean.  It is usually preferable to work in the original scale by taking the antilogarithm of $\bar{logx}$ to form the geometric mean.
 
 ```{r comment = NA}
-# Calcuate arithmetic mean
+# Calcuate geometric arithmetic mean
 library(DescTools)
 Gmean(data$Age)
 ```

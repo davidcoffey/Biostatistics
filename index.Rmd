@@ -18,13 +18,13 @@ description: "Principles of biostatistics and how to apply them using the R prog
 This books provides a consise overview of biostatistics and its applications using the R programming language.  The textbook *Fundamentals of Biostatitics* [@Rosner2016] was used extensivity in the preparation of this book.
 
 ## Example dataset
-Examples of R functions are performed on a dataset of patients with newly diagnosed multiple myeloma.  This dataset  contains a variety of categorical and continuous variables (Table 1). 
+Examples of R functions are performed on a dataset of patients with newly diagnosed multiple myeloma.  This dataset  contains a variety of categorical and continuous variables. 
 
 ```{r echo=FALSE}
 library(knitr)
 library(kableExtra)
 load("docs/Example-data.Rda")
-kable(data)%>%
+kable(data) %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive", "bordered"), font_size = 12) %>%
   scroll_box(width = "100%", height = "100%") %>%
   footnote(general = "Example dataset", general_title = "Table 1", title_format = "italic")
