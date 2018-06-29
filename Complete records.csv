@@ -1,0 +1,21 @@
+"ID","Sex","Race","Age","Stage","SurvivalMonths","Status","DiagnosisYear","Treatment","TreatmentDurationMonths","BonyLesions","PlasmaCells","1q+","del13q","del17p","del1p","t(11;14)","t(14;16)","t(4:14)","t(6;14)","Albumin","B2M","Calcium","Creatinine","LightChainRatio","Hematocrit","LDH","MProtein"
+1,"Male","Black",65,"II",20.6,"Unknown","2016","VRD",78,"1",80,"Normal","Normal","Normal","Normal","Normal","Normal","Abnormal","Normal",3.1,4.7,9.6,1.02,135.42,28,208,4.9
+2,"Female","White",44,"I",16.23,"Dead","2015","VRD",79,">3",20,"Normal","Normal","Abnormal","Abnormal","Normal","Normal","Normal","Normal",4.8,1.5,9.6,0.72,3700,34,183,0
+3,"Male","Black",55,"II",22.63,"Alive","2016","VRD",173,">3",30,"Normal","Normal","Normal","Normal","Normal","Normal","Normal","Normal",3.4,4.3,9.1,1.28,5.82,33,127,4.2
+4,"Female","White",64,"I",22.63,"Alive","2016","VRD",184,"0",54,"Normal","Normal","Normal","Normal","Normal","Normal","Normal","Normal",4.2,2.6,10.1,0.71,4.77,31,190,1.7
+5,"Female","White",62,"III",21.3,"Alive","2016","VRD",93,"1",0.028,"Normal","Normal","Normal","Abnormal","Normal","Normal","Normal","Normal",4.6,6.7,10,0.9,113.38,32,243,0.3
+6,"Male","White",64,"III",17.57,"Alive","2016","CyBorD",21,"0",17.8,"Normal","Abnormal","Normal","Normal","Normal","Normal","Normal","Normal",2.1,17,13,3.84,2105.97,20,100,7.3
+7,"Female","White",60,"II",35.43,"Unknown","2012","Not specified",528,"0",0,"Normal","Normal","Normal","Normal","Abnormal","Normal","Normal","Normal",4.3,4.4,11.4,1.01,15575,35,188,0
+8,"Male","White",58,"II",27.83,"Alive","2016","VRD",76,">3",5,"Normal","Abnormal","Normal","Normal","Abnormal","Normal","Normal","Normal",4.1,2.3,9.3,0.93,44.8,44,97,1.1
+9,"Male","White",69,"I",37.7,"Alive","2015","Not specified",27,">3",9.6,"Normal","Abnormal","Normal","Normal","Normal","Normal","Normal","Normal",4.5,2.3,9.2,0.91,82.2,40,205,0
+10,"Male","White",51,"III",31.83,"Alive","2015","CyBorD",192,"0",43,"Normal","Normal","Normal","Normal","Abnormal","Normal","Normal","Normal",4.3,8.6,16,3.9,148.15,37,253,0.7
+11,"Female","White",33,"II",58.1,"Unknown","2011","VRD",73,">3",0,"Normal","Normal","Normal","Normal","Normal","Normal","Normal","Normal",2.6,2.4,8.6,0.79,1.94,31,180,6.5
+12,"Male","White",57,"I",22.63,"Unknown","2015","Not specified",24,">3",65,"Normal","Abnormal","Normal","Normal","Normal","Normal","Normal","Normal",4.2,2.9,9.7,0.97,464.86,38,122,1.6
+13,"Female","Black",72,"I",10.23,"Unknown","2012","Not specified",55,"1",21,"Normal","Normal","Normal","Normal","Normal","Abnormal","Normal","Normal",4,5.5,9.9,1.1,1030,31,1551,0
+14,"Female","White",64,"II",43.57,"Alive","2014","Not specified",1979,">3",68,"Normal","Normal","Normal","Normal","Normal","Normal","Normal","Normal",2.9,3.6,11.4,0.57,1860,32,89,2.9
+15,"Male","Not reported",63,"III",52.77,"Alive","2014","VRD",1016,"0",38,"Normal","Normal","Normal","Normal","Normal","Normal","Abnormal","Normal",2.6,5.7,9.2,1.07,75.82,30,104,4.3
+16,"Male","Asian",52,"III",27.23,"Alive","2016","VRD",162,"0",55,"Normal","Abnormal","Abnormal","Normal","Normal","Normal","Abnormal","Normal",3.7,3.9,9.2,1.08,741.18,22,172,0.25
+17,"Male","White",76,"II",22.37,"Dead","2014","Not specified",88,">3",25,"Normal","Normal","Normal","Normal","Normal","Normal","Normal","None",3,5.3,9.9,1.27,21.05,34,130,3.9
+18,"Female","White",64,"III",33.87,"Unknown","2014","VRD",212,">3",0,"Abnormal","Normal","Normal","Abnormal","Normal","Normal","Normal","Normal",4.4,1.9,10,0.83,1.93,43,241,0
+19,"Male","White",53,"I",27.73,"Unknown","2014","VRD",78,"1",0,"Normal","Abnormal","Normal","Normal","Normal","Normal","Normal","Normal",3.7,1.7,9.6,0.86,3.44,40,139,3.1
+20,"Male","White",64,"II",84.7,"Dead","2009","CyBorD",60,"0",50,"Normal","Normal","Normal","Normal","Normal","Normal","Normal","Normal",3.8,2.1,10.1,1.1,97.46,35,192,1.1

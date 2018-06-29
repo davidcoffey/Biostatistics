@@ -25,7 +25,7 @@
 <meta name="author" content="David Coffey">
 
 
-<meta name="date" content="2018-06-27">
+<meta name="date" content="2018-06-29">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -49,6 +49,43 @@
 
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -66,8 +103,16 @@
 <li><a href="./">Biostatistics</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> General overview</a></li>
-<li class="chapter" data-level="2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>2</b> Descriptive statistics</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> General overview</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#example-dataset"><i class="fa fa-check"></i><b>1.2</b> Example dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>2</b> Descriptive statistics</a><ul>
+<li class="chapter" data-level="2.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#arithmetic-mean"><i class="fa fa-check"></i><b>2.1</b> Arithmetic mean</a></li>
+<li class="chapter" data-level="2.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#median"><i class="fa fa-check"></i><b>2.2</b> Median</a></li>
+<li class="chapter" data-level="2.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#mode"><i class="fa fa-check"></i><b>2.3</b> Mode</a></li>
+<li class="chapter" data-level="2.4" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#geometric-mean"><i class="fa fa-check"></i><b>2.4</b> Geometric mean</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -88,8 +133,44 @@
             <section class="normal" id="section-">
 <div id="descriptive-statistics" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> Descriptive statistics</h1>
-<p>This section is in progress.</p>
+<div id="arithmetic-mean" class="section level2">
+<h2><span class="header-section-number">2.1</span> Arithmetic mean</h2>
+<p>The arithmetic mean (<span class="math inline">\(\bar{x}\)</span>) is a measure of central location. It is calculated from the sum of all the observations (<span class="math inline">\({n}\)</span>) divided by the number of observations:</p>
+<p><span class="math display">\[\bar{x}=\frac{\sum_{i=1}^nx_{i}}{n}\]</span></p>
+<p>The notation <span class="math inline">\(\sum_{i=1}^nx_{i}\)</span> means the sum of all <span class="math inline">\({x}_i\)</span> observations <span class="math inline">\(({x}_1+{x}_2+{x}_n)\)</span>. One limitation to the arithmetic mean is that it is overly sensitive to extreme values.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Import dataset</span>
+<span class="kw">load</span>(<span class="st">&quot;docs/Example-data.Rda&quot;</span>)
 
+<span class="co"># Calcuate arithmetic mean</span>
+<span class="kw">mean</span>(data<span class="op">$</span>Age)</code></pre></div>
+<pre><code>[1] 59.5</code></pre>
+</div>
+<div id="median" class="section level2">
+<h2><span class="header-section-number">2.2</span> Median</h2>
+<p>If all observations are ordered from smallest to largest, the median is the middle number. More precisely, if <span class="math inline">\({n}\)</span> is odd, <span class="math inline">\(\frac{n+1}{2}\)</span>, or if <span class="math inline">\({n}\)</span> is even, the average of <span class="math inline">\(\frac{n}{2}\)</span> and <span class="math inline">\(\frac{n}{2}+1\)</span>.</p>
+<p>The rationale for using to the median is to ensure an equal number of observations on both sides of the sample median. The main weakness of the sample median is that it is less sensitive to the actual numeric values of the data points. If the sample distribution is symmetric, the arithmetic mean is approximately the same as the median. For positively skewed distributions, the arithmetic mean tends to be larger than the median; for negatively skewed distributions, the arithmetic means tends to be smaller than the median.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Calcuate arithmetic mean</span>
+<span class="kw">median</span>(data<span class="op">$</span>Age)</code></pre></div>
+<pre><code>[1] 62.5</code></pre>
+</div>
+<div id="mode" class="section level2">
+<h2><span class="header-section-number">2.3</span> Mode</h2>
+<p>The mode is the most frequently occurring value among all of the observations in a sample. Some distributions have more than one mode. A distribution with one mode is called unimodal; two modes, bimodal; three modes, trimodal.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Calcuate arithmetic mean</span>
+<span class="kw">library</span>(DescTools)
+<span class="kw">Mode</span>(data<span class="op">$</span>Age)</code></pre></div>
+<pre><code>[1] 64</code></pre>
+</div>
+<div id="geometric-mean" class="section level2">
+<h2><span class="header-section-number">2.4</span> Geometric mean</h2>
+<p>The geometric mean <span class="math inline">\(\bar{logx}\)</span> is the central number in a geometric progression such as exponential growth. The geometric mean is defined as the nth root of the product of n numbers:</p>
+<p><span class="math display">\[\bar{logx}=\frac{\sum_{i=1}^nlogx_{i}}{n}\]</span> Any base can be used to compute the logarithms for the geometric mean. It is usually preferable to work in the original scale by taking the antilogarithm of <span class="math inline">\(\bar{logx}\)</span> to form the geometric mean.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Calcuate arithmetic mean</span>
+<span class="kw">library</span>(DescTools)
+<span class="kw">Gmean</span>(data<span class="op">$</span>Age)</code></pre></div>
+<pre><code>[1] 58.61499</code></pre>
+
+</div>
 </div>
             </section>
 
@@ -131,6 +212,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
