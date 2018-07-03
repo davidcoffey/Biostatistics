@@ -1,11 +1,12 @@
 # Descriptive statistics
 
-## Arithmetic mean
-The arithmetic mean ($\bar{x}$) is a measure of central location.  It is calculated from the sum of all the observations (${n}$) divided by the number of observations:
+## Measures of location
+### Arithmetic mean
+The arithmetic mean ($\bar{x}$) is a measure of central location. It is calculated from the sum of all the observations (${n}$) divided by the number of observations:
 
 $$\bar{x}=\frac{\sum_{i=1}^nx_{i}}{n}$$
 
-The notation $\sum_{i=1}^nx_{i}$ means the sum of all ${x}_i$ observations $({x}_1+{x}_2+{x}_n)$.  One limitation to the arithmetic mean is that it is overly sensitive to extreme values.
+The notation $\sum_{i=1}^nx_{i}$ means the sum of all ${x}_i$ observations $({x}_1+{x}_2+{x}_n)$. One limitation to the arithmetic mean is that it is overly sensitive to extreme values.
 
 ```{r, comment = NA}
 # Import dataset
@@ -15,18 +16,16 @@ load("docs/Example-data.Rda")
 mean(data$Age)
 ```
 
-## Median
-If all observations are ordered from smallest to largest, the median is the middle number.  More precisely, if ${n}$ is odd, $\frac{n+1}{2}$, or if ${n}$ is even, the average of $\frac{n}{2}$ and $\frac{n}{2}+1$.
-
-The rationale for using to the median is to ensure an equal number of observations on both sides of the sample median.  The main weakness of the sample median is that it is less sensitive to the actual numeric values of the data points.  If the sample distribution is symmetric, the arithmetic mean is approximately the same as the median.  For positively skewed distributions, the arithmetic mean tends to be larger than the median; for negatively skewed distributions, the arithmetic means tends to be smaller than the median.
+### Median
+If all observations are ordered from smallest to largest, the median is the middle number. More precisely, if ${n}$ is odd, $\frac{n+1}{2}$, or if ${n}$ is even, the average of $\frac{n}{2}$ and $\frac{n}{2}+1$. The rationale for using to the median is to ensure an equal number of observations on both sides of the sample median. The main weakness of the sample median is that it is less sensitive to the actual numeric values of the data points. If the sample distribution is symmetric, the arithmetic mean is approximately the same as the median. For positively skewed distributions, the arithmetic mean tends to be larger than the median; for negatively skewed distributions, the arithmetic means tends to be smaller than the median.
 
 ```{r, comment = NA}
 # Calcuate arithmetic mean
 median(data$Age)
 ```
 
-## Mode
-The mode is the most frequently occurring value among all of the observations in a sample.  Some distributions have more than one mode.  A distribution with one mode is called unimodal; two modes, bimodal; three modes, trimodal.
+### Mode
+The mode is the most frequently occurring value among all of the observations in a sample. Some distributions have more than one mode. A distribution with one mode is called unimodal; two modes, bimodal; three modes, trimodal.
 
 ```{r comment = NA}
 # Calcuate mode
@@ -34,11 +33,11 @@ library(DescTools)
 Mode(data$Age)
 ```
 
-## Geometric mean
-The geometric mean ($\bar{logx}$) is the central number in a geometric progression such as exponential growth.  The geometric mean is defined as the ${n}$th root of the product of ${n}$ numbers:
+### Geometric mean
+The geometric mean ($\bar{logx}$) is the central number in a geometric progression such as exponential growth. The geometric mean is defined as the ${n}$th root of the product of ${n}$ numbers:
 
 $$\bar{logx}=\frac{\sum_{i=1}^nlogx_{i}}{n}$$
-Any base can be used to compute the logarithms for the geometric mean.  It is usually preferable to work in the original scale by taking the antilogarithm of $\bar{logx}$ to form the geometric mean.
+Any base can be used to compute the logarithms for the geometric mean. It is usually preferable to work in the original scale by taking the antilogarithm of $\bar{logx}$ to form the geometric mean.
 
 ```{r comment = NA}
 # Calcuate geometric arithmetic mean
@@ -46,3 +45,142 @@ library(DescTools)
 Gmean(data$Age)
 ```
 
+## Measures of spread
+### Range
+The range is the difference between the smallest and largest observations in a sample. Range is very sensitive to extreme observations and depends on the sample size since the large the ${n}$, the largest the range tends to be.
+
+```{r comment = NA}
+# Calcuate range
+range(data$Age)
+```
+
+### Percentile
+Percentile is the value below which a given percentage of observations in a group of observations fall. The median is the 50th percentile and is a special case of a quantile. Compared to range, percentiles are less sensitive to outliers. The ${p}$th percentile is defined by the ${(k+1)}$th largest sample observation if ${np/100}$ is not an integer where ${k}$ is the largest integer less than ${np/100}$. If ${np/100}$ is an integer, then the ${p}$th percentile is the average of the ${(np/100)}$th and the ${(np/100+1)}$th largest observations.
+
+```{r comment = NA}
+# Calcuate the 5th and 95th percentiles
+quantile(data$Age, probs = c(0.05, 0.95), type = 2)
+```
+
+### Variance
+Variance (${s^2}$) is the average of the squared differences from the mean. The reason for squaring the differences is because the sum of the differences are always equal to zero.
+$${s^2=\frac{\sum_{i=1}^n(x_i-\bar{x})^2}{n-1}}$$
+
+```{r comment = NA}
+# Calcuate variance
+var(data$Age)
+```
+
+### Standard deviation
+Standard deviation (${s}$) is the square root of the sample variance. The advantage of using the standard deviation over the variance is that both the mean and standard deviation are in the same units whereas the variance and mean are not.
+$${s=\sqrt\frac{\sum_{i=1}^n(x_i-\bar{x})^2}{n-1}}$$
+
+```{r comment = NA}
+# Calcuate standard deviation
+sd(data$Age)
+```
+
+### Standard error of the mean
+Standard error (${se}$) of the mean is how far the sample mean deviates from the population mean.The standard error of the mean is estimated by $\frac{s}{\sqrt{n}}$.
+
+```{r comment = NA}
+# Calcuate standard error
+library(DescTools)
+MeanSE(data$Age)
+```
+
+### Coefficient of varaince
+The coefficient of variation (${CV}$) is a measure of relative variability and remains the same regardless of the observations units. ${CV}$ is defined by ${100\% \times s/\bar{x}}$. Coefficient of variation is most useful in comparing the variability of several different samples, each with different arithmetic means.
+
+```{r comment = NA}
+# Calcuate coefficient of variance
+library(DescTools)
+CoefVar(data$Age)
+```
+
+## Visualizing descriptive statistics
+### Single variable
+#### Stem and leaf plot
+```{r comment = NA}
+# Create a stem and leaf plot
+stem(data$Age)
+```
+
+#### Frequency distribution table
+```{r comment = NA}
+# Create a frequency distribution table
+table(data$Age)
+```
+
+#### Dot plot
+```{r message = FALSE, warning = FALSE, comment = NA}
+# Create a dot plot
+library(ggplot2)
+ggplot(data = data, aes(x = Age)) +
+  geom_dotplot()
+```
+
+#### Histogram
+```{r message = FALSE, warning = FALSE, comment = NA}
+# Create a histogram
+library(ggplot2)
+ggplot(data = data, aes(x = Age)) +
+  geom_histogram()
+```
+
+#### Density plot
+```{r comment = NA}
+# Create a density plot
+library(ggplot2)
+ggplot(data = data, aes(x = Age)) +
+  geom_density()
+```
+
+### Muliple variables
+#### Summary table
+```{r include=FALSE}
+# Pre-load dplyr to avoid message
+library(dplyr)
+```
+
+```{r comment = NA}
+# Create a summary statistics table
+library(dplyr)
+stats <- group_by(data, Sex) %>%
+summarise(Mean = mean(Age), Median = median(Age), SD = sd(Age), SE = MeanSE(Age), N = n())
+stats
+```
+
+#### Bar graph
+```{r comment = NA}
+# Create a bar graph with standard error bars
+library(ggplot2)
+ggplot(data = stats, aes(x = Sex, y = Mean)) +
+  geom_bar(stat = "identity") +
+  geom_errorbar(aes(ymin = Mean-SE, ymax = Mean+SE, width = 0.2)) +
+  labs(y = "Mean age")
+```
+
+#### Box plot
+```{r comment = NA}
+# Create a boxplot
+library(ggplot2)
+ggplot(data = data, aes(x = Sex, y = Age)) +
+  geom_boxplot()
+```
+
+#### Violin plot
+```{r comment = NA}
+# Create a violin plot
+library(ggplot2)
+ggplot(data = data, aes(x = Sex, y = Age)) +
+  geom_violin()
+```
+
+#### Jitter plot
+```{r comment = NA}
+# Create a jitter plot
+library(ggplot2)
+ggplot(data = data, aes(x = Sex, y = Age)) +
+  geom_jitter(width = 0.2)
+```
