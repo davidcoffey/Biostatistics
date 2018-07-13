@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="descriptive-statistics.html">
-<link rel="next" href="normal-distribution.html">
+<link rel="prev" href="probability.html">
+<link rel="next" href="references.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -157,77 +157,27 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="probability" class="section level1">
-<h1><span class="header-section-number">Chapter 3</span> Probability</h1>
-<div id="table-of-confusion" class="section level2">
-<h2><span class="header-section-number">3.1</span> Table of confusion</h2>
-<p>A table of confusion is a table with 2 rows and 2 columns that reports the number of false positives, false negatives, true positives, and true negatives. Rows represent a prediction outcomes such as a test result and columns represent outcomes of the condition being predicted such as a disease state.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Import dataset</span>
-<span class="kw">load</span>(<span class="st">&quot;docs/Example-data.Rda&quot;</span>)
-
-<span class="co"># Create a table of confusion</span>
-BonyLesions &lt;-<span class="st"> </span><span class="kw">ifelse</span>(data<span class="op">$</span>BonyLesions <span class="op">!=</span><span class="st"> &quot;0&quot;</span> , <span class="st">&quot;Abnormal&quot;</span>, <span class="st">&quot;Normal&quot;</span>)
-MProtein &lt;-<span class="st"> </span><span class="kw">ifelse</span>(data<span class="op">$</span>MProtein <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> , <span class="st">&quot;Abnormal&quot;</span>, <span class="st">&quot;Normal&quot;</span>)
-<span class="kw">table</span>(MProtein, BonyLesions)</code></pre></div>
-<pre><code>          BonyLesions
-MProtein   Abnormal Normal
-  Abnormal        9      6
-  Normal          4      1</code></pre>
-<p>Sensitivity and specificity to assess the quality of a test. Positive and negative predictive values to interpret the results of the test.</p>
-</div>
-<div id="sensitivity" class="section level2">
-<h2><span class="header-section-number">3.2</span> Sensitivity</h2>
-<p>Sensitivity is the ability of a test to correctly classify an individual as having a disease. It is defined by the probability of having a positive test when the disease is present: <span class="math display">\[{\frac{True\ positives}{True\ positives + False\ negatives}=\frac{True\ positives}{Number\ with\ condition}}\]</span></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Calculate sensitivity</span>
-<span class="kw">library</span>(caret)
-<span class="kw">sensitivity</span>(<span class="kw">factor</span>(MProtein), <span class="kw">factor</span>(BonyLesions)) <span class="co"># sensitivity(prediction,truth)</span></code></pre></div>
-<pre><code>[1] 0.6923077</code></pre>
-</div>
-<div id="specificity" class="section level2">
-<h2><span class="header-section-number">3.3</span> Specificity</h2>
-<p>Specificity is the ability of a test to correctly classify an individual disease free. It is defined by the probability of having a negative test when the disease absent: <span class="math display">\[{\frac{True\ negatives}{True\ negatives + False\ positives}=\frac{True\ negatives}{Number\ without\ condition}}\]</span></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Calculate specificity</span>
-<span class="kw">library</span>(caret)
-<span class="kw">specificity</span>(<span class="kw">factor</span>(MProtein), <span class="kw">factor</span>(BonyLesions)) <span class="co"># specificity(prediction,truth)</span></code></pre></div>
-<pre><code>[1] 0.1428571</code></pre>
-</div>
-<div id="postitive-predictive-value" class="section level2">
-<h2><span class="header-section-number">3.4</span> Postitive predictive value</h2>
-<p>Positive predictive value is the percentage of patients with a positive test who actually have the disease. It is defined by the probability of having the disease when the test is positive: <span class="math display">\[{\frac{True\ positives}{True\ positives + False\ positives}=\frac{True\ positives}{Postive\ predictions}}\]</span></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Calculate postitive predictive value</span>
-<span class="kw">library</span>(caret)
-<span class="kw">posPredValue</span>(<span class="kw">factor</span>(MProtein), <span class="kw">factor</span>(BonyLesions)) <span class="co"># posPredValue(prediction,truth)</span></code></pre></div>
-<pre><code>[1] 0.6</code></pre>
-</div>
-<div id="negative-predictive-value" class="section level2">
-<h2><span class="header-section-number">3.5</span> Negative predictive value</h2>
-<p>Negative predictive value is the percentage of patients with a negative test who do not have the disease. It is defined by the probability of not having the disease when the test is negative: <span class="math display">\[{\frac{True\ negataives}{True\ negatives + False\ negatives}=\frac{True\ positives}{Negative\ predictions}}\]</span></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Calculate negative predictive value</span>
-<span class="kw">library</span>(caret)
-<span class="kw">negPredValue</span>(<span class="kw">factor</span>(MProtein), <span class="kw">factor</span>(BonyLesions)) <span class="co"># negPredValue(prediction,truth)</span></code></pre></div>
-<pre><code>[1] 0.2</code></pre>
-</div>
-<div id="roc-curve" class="section level2">
-<h2><span class="header-section-number">3.6</span> ROC curve</h2>
-<p>The receiver operating characteristics (ROC) curve is a plot of the true positive rate versus (sensitivity) versus the false positive rate (specificity) of a screening test. Each point on the curve corresponds to different cutoff points used to designate a positive test. The area under the curve is an estimate of the accuracy of the test.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(plotROC)
+<div id="normal-distribution" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Normal distribution</h1>
+<div id="probability-distributions" class="section level2">
+<h2><span class="header-section-number">4.1</span> Probability distributions</h2>
+<p>A probability distribution is a mathematical function that provides the probabilities of occurrence of different possible outcomes. Probability distributions are generally divided into two classes. A <strong>discrete probability distribution</strong> applies to discrete random variables such as the probability of being alive or dead as in the binomial distribution or the probability of a given number of deaths occurring in a fixed time interval as in the Poisson distribution. A <strong>continuous probability distribution</strong> applies to continuous random variables such as the mesure of hematocrit on any given day. The most common continuous probability distribution is the normal or Gaussian distribution and is defined by the following probability-density fuction: <span class="math display">\[f(x)=\frac{1}{\sqrt{2\pi\sigma}}e^{-\frac{1}{2\sigma^{2}}(x-\mu)^{2}}\]</span> where <span class="math inline">\({x}\)</span> is a continuous random variable, <span class="math inline">\({\sigma^{2}}\)</span> is the variance, and <span class="math inline">\({\mu}\)</span> is the mean. Properties of the normal distribution include:</p>
+<ul>
+<li>The curve is symmetric about <span class="math inline">\({\mu}\)</span></li>
+<li>The entire shape of the normal distribution is determined by the two paramateres <span class="math inline">\({\mu}\)</span> and <span class="math inline">\({\sigma^{2}}\)</span></li>
+<li>The area under the curve between any two points <span class="math inline">\({a}\)</span> and <span class="math inline">\({b}\)</span> is equal to the proability that the random variable <span class="math inline">\({x}\)</span> falls between <span class="math inline">\({a}\)</span> and <span class="math inline">\({b}\)</span></li>
+<li>The area under the entire normal density function is always equal to 1</li>
+<li>The probability that the random variable <span class="math inline">\({x}\)</span> falls between ±1 standard deviation is approximately 68%, ±2 standard deviations is 95%, and ±2.5 standard deviations is 99%.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Calculate the probabilities of a normally distributed random variable</span>
 <span class="kw">library</span>(ggplot2)
-
-<span class="kw">ggplot</span>(<span class="kw">data.frame</span>(BonyLesions, <span class="dt">MProtein =</span> data<span class="op">$</span>MProtein), <span class="kw">aes</span>(<span class="dt">d =</span> BonyLesions, <span class="dt">m =</span> MProtein)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_roc</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">style_roc</span>()</code></pre></div>
-<p><img src="Biostatistics_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Calculate area under the curve</span>
-<span class="kw">calc_auc</span>(
-  <span class="kw">ggplot</span>(<span class="kw">data.frame</span>(BonyLesions, <span class="dt">MProtein =</span> data<span class="op">$</span>MProtein), <span class="kw">aes</span>(<span class="dt">d =</span> BonyLesions, <span class="dt">m =</span> MProtein)) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">geom_roc</span>()
-  )</code></pre></div>
-<pre><code>  PANEL group      AUC
-1     1    -1 0.521978</code></pre>
-</div>
-<div id="baysian-inference" class="section level2">
-<h2><span class="header-section-number">3.7</span> Baysian inference</h2>
-<p>Frequentist inference is a type of statistical inference that draws conclusions from sample data by emphasizing the frequency or proportion of the data. Bayesian inference is an alternative method of statistical inference in which Bayes’ theorem is used to update the probability for a hypothesis as more evidence or information becomes available. It is given by the following formula: <span class="math display">\[Baye&#39;s\ theorem = {Pr({A|B})=\frac{Pr(B|A)\times Pr(A)}{Pr(B)}}\]</span> where <span class="math inline">\({Pr({A|B})}\)</span> the likelihood of event <span class="math inline">\({A}\)</span> occurring given that <span class="math inline">\({B}\)</span> is true, <span class="math inline">\({Pr({B|A})}\)</span> the likelihood of event <span class="math inline">\({B}\)</span> occurring given that <span class="math inline">\({A}\)</span> is true, and <span class="math inline">\({Pr({A)}}\)</span> and <span class="math inline">\({Pr(A)}\)</span> are the probabilities of observing A and B independently of each other. Bayesians conceive of two types of probability, a <strong>prior probability</strong> of an event which is the best guess by the observer in the absence of data, and a <strong>posterior probability</strong> which is the likelihood that an event will occur after collecting some empirical data.</p>
+p =<span class="st"> </span><span class="kw">dnorm</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">5</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
+p</code></pre></div>
+<pre><code> [1] 1.338302e-04 4.431848e-03 5.399097e-02 2.419707e-01 3.989423e-01
+ [6] 2.419707e-01 5.399097e-02 4.431848e-03 1.338302e-04 1.486720e-06</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="kw">data.frame</span>(<span class="dt">Probability =</span> p, <span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>), <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> Probability)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</code></pre></div>
+<p><img src="Biostatistics_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 
 </div>
 </div>
@@ -236,8 +186,8 @@ MProtein   Abnormal Normal
           </div>
         </div>
       </div>
-<a href="descriptive-statistics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="normal-distribution.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="probability.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
