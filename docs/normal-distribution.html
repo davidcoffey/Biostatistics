@@ -25,7 +25,7 @@
 <meta name="author" content="David Coffey">
 
 
-<meta name="date" content="2018-07-13">
+<meta name="date" content="2018-07-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -138,6 +138,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="4" data-path="normal-distribution.html"><a href="normal-distribution.html"><i class="fa fa-check"></i><b>4</b> Normal distribution</a><ul>
 <li class="chapter" data-level="4.1" data-path="normal-distribution.html"><a href="normal-distribution.html#probability-distributions"><i class="fa fa-check"></i><b>4.1</b> Probability distributions</a></li>
+<li class="chapter" data-level="4.2" data-path="normal-distribution.html"><a href="normal-distribution.html#test-for-normality"><i class="fa fa-check"></i><b>4.2</b> Test for normality</a></li>
+<li class="chapter" data-level="4.3" data-path="normal-distribution.html"><a href="normal-distribution.html#quantile-quantile-plot"><i class="fa fa-check"></i><b>4.3</b> Quantile-quantile plot</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -161,11 +163,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">Chapter 4</span> Normal distribution</h1>
 <div id="probability-distributions" class="section level2">
 <h2><span class="header-section-number">4.1</span> Probability distributions</h2>
-<p>A probability distribution is a mathematical function that provides the probabilities of occurrence of different possible outcomes. Probability distributions are generally divided into two classes. A <strong>discrete probability distribution</strong> applies to discrete random variables such as the probability of being alive or dead as in the binomial distribution or the probability of a given number of deaths occurring in a fixed time interval as in the Poisson distribution. A <strong>continuous probability distribution</strong> applies to continuous random variables such as the mesure of hematocrit on any given day. The most common continuous probability distribution is the normal or Gaussian distribution and is defined by the following probability-density fuction: <span class="math display">\[f(x)=\frac{1}{\sqrt{2\pi\sigma}}e^{-\frac{1}{2\sigma^{2}}(x-\mu)^{2}}\]</span> where <span class="math inline">\({x}\)</span> is a continuous random variable, <span class="math inline">\({\sigma^{2}}\)</span> is the variance, and <span class="math inline">\({\mu}\)</span> is the mean. Properties of the normal distribution include:</p>
+<p>A probability distribution is a mathematical function that provides the probabilities of occurrence of different possible outcomes. Probability distributions are generally divided into two classes. A <strong>discrete probability distribution</strong> applies to discrete random variables such as the probability of being alive or dead as in the binomial distribution or the probability of a given number of deaths occurring in a fixed time interval as in the Poisson distribution. A <strong>continuous probability distribution</strong> applies to continuous random variables such as the measure of hematocrit on any given day. The most common continuous probability distribution is the normal or Gaussian distribution and is defined by the following probability-density function: <span class="math display">\[f(x)=\frac{1}{\sqrt{2\pi\sigma}}e^{-\frac{1}{2\sigma^{2}}(x-\mu)^{2}}\]</span> where <span class="math inline">\({x}\)</span> is a continuous random variable, <span class="math inline">\({\sigma^{2}}\)</span> is the variance, and <span class="math inline">\({\mu}\)</span> is the mean. Properties of the normal distribution include:</p>
 <ul>
 <li>The curve is symmetric about <span class="math inline">\({\mu}\)</span></li>
-<li>The entire shape of the normal distribution is determined by the two paramateres <span class="math inline">\({\mu}\)</span> and <span class="math inline">\({\sigma^{2}}\)</span></li>
-<li>The area under the curve between any two points <span class="math inline">\({a}\)</span> and <span class="math inline">\({b}\)</span> is equal to the proability that the random variable <span class="math inline">\({x}\)</span> falls between <span class="math inline">\({a}\)</span> and <span class="math inline">\({b}\)</span></li>
+<li>The entire shape of the normal distribution is determined by the two parameters <span class="math inline">\({\mu}\)</span> and <span class="math inline">\({\sigma^{2}}\)</span></li>
+<li>The area under the curve between any two points <span class="math inline">\({a}\)</span> and <span class="math inline">\({b}\)</span> is equal to the probability that the random variable <span class="math inline">\({x}\)</span> falls between <span class="math inline">\({a}\)</span> and <span class="math inline">\({b}\)</span></li>
 <li>The area under the entire normal density function is always equal to 1</li>
 <li>The probability that the random variable <span class="math inline">\({x}\)</span> falls between ±1 standard deviation is approximately 68%, ±2 standard deviations is 95%, and ±2.5 standard deviations is 99%.</li>
 </ul>
@@ -178,6 +180,30 @@ p</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="kw">data.frame</span>(<span class="dt">Probability =</span> p, <span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>), <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> Probability)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</code></pre></div>
 <p><img src="Biostatistics_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="test-for-normality" class="section level2">
+<h2><span class="header-section-number">4.2</span> Test for normality</h2>
+<p>The Shapiro-Wilk test of normality tests if the population is normally distributed. If the p-value is less than 0.05, then the null hypothesis is rejected and there is evidence that the data tested are <em>not</em> from a normally distributed population.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Import dataset</span>
+<span class="kw">load</span>(<span class="st">&quot;docs/Example-data.Rda&quot;</span>)
+
+<span class="co"># Shapiro-Wilk test of normality</span>
+<span class="kw">shapiro.test</span>(data<span class="op">$</span>Age)</code></pre></div>
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  data$Age
+W = 0.93058, p-value = 0.1584</code></pre>
+</div>
+<div id="quantile-quantile-plot" class="section level2">
+<h2><span class="header-section-number">4.3</span> Quantile-quantile plot</h2>
+<p>Quantile-quantile (Q-Q) plot is a probability plot, which is a graphical method for comparing two probability distributions by plotting their quantiles against each other. If the two distributions being compared are similar, the points in the Q–Q plot will approximately lie on the line y = x. If the distributions are linearly related, the points in the Q–Q plot will approximately lie on a line, but not necessarily on the line y = x.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Q-Q plot</span>
+<span class="kw">library</span>(ggplot2)
+<span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">sample =</span> Age)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">stat_qq</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">stat_qq_line</span>()</code></pre></div>
+<p><img src="Biostatistics_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 
 </div>
 </div>

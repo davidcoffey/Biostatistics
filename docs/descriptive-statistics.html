@@ -25,7 +25,7 @@
 <meta name="author" content="David Coffey">
 
 
-<meta name="date" content="2018-07-13">
+<meta name="date" content="2018-07-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -138,6 +138,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="4" data-path="normal-distribution.html"><a href="normal-distribution.html"><i class="fa fa-check"></i><b>4</b> Normal distribution</a><ul>
 <li class="chapter" data-level="4.1" data-path="normal-distribution.html"><a href="normal-distribution.html#probability-distributions"><i class="fa fa-check"></i><b>4.1</b> Probability distributions</a></li>
+<li class="chapter" data-level="4.2" data-path="normal-distribution.html"><a href="normal-distribution.html#test-for-normality"><i class="fa fa-check"></i><b>4.2</b> Test for normality</a></li>
+<li class="chapter" data-level="4.3" data-path="normal-distribution.html"><a href="normal-distribution.html#quantile-quantile-plot"><i class="fa fa-check"></i><b>4.3</b> Quantile-quantile plot</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -231,7 +233,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="standard-error-of-the-mean" class="section level3">
 <h3><span class="header-section-number">2.2.5</span> Standard error of the mean</h3>
-<p>Standard error (<span class="math inline">\({se}\)</span>) of the mean is how far the sample mean deviates from the population mean.The standard error of the mean is estimated by <span class="math inline">\(\frac{s}{\sqrt{n}}\)</span>.</p>
+<p>The standard error (<span class="math inline">\({se}\)</span>) of the mean is how far the sample mean deviates from the population mean. It is equal to the variance obtained from a set of sample means from repeated samples of size <span class="math inline">\({n}\)</span> from a population with underlying variance <span class="math inline">\({s}\)</span>. The standard error of the mean is estimated by <span class="math inline">\(\frac{s}{\sqrt{n}}\)</span>. The larger the sample size, the more precise the sample mean will estimate the population mean.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Calcuate standard error</span>
 <span class="kw">library</span>(DescTools)
 <span class="kw">MeanSE</span>(data<span class="op">$</span>Age)</code></pre></div>

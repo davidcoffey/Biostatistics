@@ -19,3 +19,25 @@ p
 ggplot(data.frame(Probability = p, x = 1:10), aes(x = x, y = Probability)) +
   geom_bar(stat = "identity")
 ```
+
+## Test for normality
+The Shapiro-Wilk test of normality tests if the population is normally distributed.  If the p-value is less than a chosen alpha, then the null hypothesis is rejected and there is evidence that the data tested are *not* from a normally distributed population.  If the p-value is greater than a chosen alpha, then the data *may* be normally distributed and one cannot reject the hypothesis that the sample comes from a population which has a normal distribution.
+
+```{r, comment = NA}
+# Import dataset
+load("docs/Example-data.Rda")
+
+# Shapiro-Wilk test of normality
+shapiro.test(data$Age)
+```
+
+## Quantile-quantile plot
+Quantile-quantile (Q-Q) plot is a probability plot, which is a graphical method for comparing two probability distributions by plotting their quantiles against each other. If the two distributions being compared are similar, the points in the Q–Q plot will approximately lie on the line y = x. If the distributions are linearly related, the points in the Q–Q plot will approximately lie on a line, but not necessarily on the line y = x.
+
+```{r, comment = NA}
+# Q-Q plot
+library(ggplot2)
+ggplot(data, aes(sample = Age)) + 
+  stat_qq() + 
+  stat_qq_line()
+```

@@ -81,7 +81,7 @@ sd(data$Age)
 ```
 
 ### Standard error of the mean
-Standard error (${se}$) of the mean is how far the sample mean deviates from the population mean.The standard error of the mean is estimated by $\frac{s}{\sqrt{n}}$.
+The standard error (${se}$) of the mean is how far the sample mean deviates from the population mean. It is equal to the variance obtained from a set of sample means from repeated samples of size ${n}$ from a population with underlying variance ${s}$. The standard error of the mean is estimated by $\frac{s}{\sqrt{n}}$.  The larger the sample size, the more precise the sample mean will estimate the population mean.
 
 ```{r comment = NA}
 # Calcuate standard error
