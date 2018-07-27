@@ -220,7 +220,7 @@ MProtein   Abnormal Normal
 <span class="kw">ggplot</span>(<span class="kw">data.frame</span>(BonyLesions, <span class="dt">MProtein =</span> data<span class="op">$</span>MProtein), <span class="kw">aes</span>(<span class="dt">d =</span> BonyLesions, <span class="dt">m =</span> MProtein)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_roc</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">style_roc</span>()</code></pre></div>
-<p><img src="Biostatistics_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="Biostatistics_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Calculate area under the curve</span>
 <span class="kw">calc_auc</span>(
   <span class="kw">ggplot</span>(<span class="kw">data.frame</span>(BonyLesions, <span class="dt">MProtein =</span> data<span class="op">$</span>MProtein), <span class="kw">aes</span>(<span class="dt">d =</span> BonyLesions, <span class="dt">m =</span> MProtein)) <span class="op">+</span><span class="st"> </span>
