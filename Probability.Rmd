@@ -13,7 +13,7 @@ MProtein <- ifelse(data$MProtein > 0 , "Abnormal", "Normal")
 table(MProtein, BonyLesions)
 ```
 
-Sensitivity and specificity to assess the quality of a test.  Positive and negative predictive values to interpret the results of the test.
+Sensitivity and specificity are measures used to assess the quality of a test.  Positive and negative predictive values are measures used to interpret the results of the test.
 
 ## Sensitivity
 Sensitivity is the ability of a test to correctly classify an individual as having a disease.  It is defined by the probability of having a positive test when the disease is present:
@@ -57,7 +57,7 @@ negPredValue(factor(MProtein), factor(BonyLesions)) # negPredValue(prediction,tr
 
 
 ## ROC curve
-The receiver operating characteristics (ROC) curve is a plot of the true positive rate versus (sensitivity) versus the false positive rate (specificity) of a screening test.  Each point on the curve corresponds to different cutoff points used to designate a positive test.  The area under the curve is an estimate of the accuracy of the test.
+The receiver operating characteristics (ROC) curve is a plot of the true positive rate (sensitivity) versus the false positive rate (specificity) of a screening test.  Each point on the curve corresponds to different cutoff points used to designate a positive test.  The area under the curve is an estimate of the accuracy of the test.
 
 ```{r, comment = NA, warning = FALSE}
 library(plotROC)

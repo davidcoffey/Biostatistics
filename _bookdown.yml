@@ -4,4 +4,4 @@ language:
     chapter_name: "Chapter "
 delete_merged_file: true
 output_dir: "docs"
-rmd_files: ["index.Rmd", "DescriptiveStatistics.Rmd", "Probability.Rmd", "NormalDistribution.Rmd", "References.Rmd"]
+rmd_files: ["index.Rmd", "DescriptiveStatistics.Rmd", "Probability.Rmd", "NormalDistribution.Rmd", "HypothesisTesting.Rmd", "References.Rmd"]

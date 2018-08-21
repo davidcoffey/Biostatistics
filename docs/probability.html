@@ -25,7 +25,7 @@
 <meta name="author" content="David Coffey">
 
 
-<meta name="date" content="2018-07-27">
+<meta name="date" content="2018-08-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -143,6 +143,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.4" data-path="normal-distribution.html"><a href="normal-distribution.html#quantile-quantile-plot"><i class="fa fa-check"></i><b>4.4</b> Quantile-quantile plot</a></li>
 <li class="chapter" data-level="4.5" data-path="normal-distribution.html"><a href="normal-distribution.html#confidence-interval"><i class="fa fa-check"></i><b>4.5</b> Confidence interval</a></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>5</b> Hypothesis testing</a><ul>
+<li class="chapter" data-level="5.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#general-concepts"><i class="fa fa-check"></i><b>5.1</b> General concepts</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -177,7 +180,7 @@ MProtein &lt;-<span class="st"> </span><span class="kw">ifelse</span>(data<span 
 MProtein   Abnormal Normal
   Abnormal        9      6
   Normal          4      1</code></pre>
-<p>Sensitivity and specificity to assess the quality of a test. Positive and negative predictive values to interpret the results of the test.</p>
+<p>Sensitivity and specificity are measures used to assess the quality of a test. Positive and negative predictive values are measures used to interpret the results of the test.</p>
 </div>
 <div id="sensitivity" class="section level2">
 <h2><span class="header-section-number">3.2</span> Sensitivity</h2>
@@ -213,7 +216,7 @@ MProtein   Abnormal Normal
 </div>
 <div id="roc-curve" class="section level2">
 <h2><span class="header-section-number">3.6</span> ROC curve</h2>
-<p>The receiver operating characteristics (ROC) curve is a plot of the true positive rate versus (sensitivity) versus the false positive rate (specificity) of a screening test. Each point on the curve corresponds to different cutoff points used to designate a positive test. The area under the curve is an estimate of the accuracy of the test.</p>
+<p>The receiver operating characteristics (ROC) curve is a plot of the true positive rate (sensitivity) versus the false positive rate (specificity) of a screening test. Each point on the curve corresponds to different cutoff points used to designate a positive test. The area under the curve is an estimate of the accuracy of the test.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(plotROC)
 <span class="kw">library</span>(ggplot2)
 

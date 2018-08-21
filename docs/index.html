@@ -25,7 +25,7 @@
 <meta name="author" content="David Coffey">
 
 
-<meta name="date" content="2018-07-27">
+<meta name="date" content="2018-08-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -143,6 +143,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.4" data-path="normal-distribution.html"><a href="normal-distribution.html#quantile-quantile-plot"><i class="fa fa-check"></i><b>4.4</b> Quantile-quantile plot</a></li>
 <li class="chapter" data-level="4.5" data-path="normal-distribution.html"><a href="normal-distribution.html#confidence-interval"><i class="fa fa-check"></i><b>4.5</b> Confidence interval</a></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>5</b> Hypothesis testing</a><ul>
+<li class="chapter" data-level="5.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#general-concepts"><i class="fa fa-check"></i><b>5.1</b> General concepts</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -164,7 +167,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="header">
 <h1 class="title">Biostatistics</h1>
 <h4 class="author"><em>David Coffey</em></h4>
-<h4 class="date"><em>2018-07-27</em></h4>
+<h4 class="date"><em>2018-08-21</em></h4>
 </div>
 <div id="general-overview" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> General overview</h1>
@@ -175,7 +178,244 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="example-dataset" class="section level2">
 <h2><span class="header-section-number">1.2</span> Example dataset</h2>
 <p>Examples of R functions are performed on a dataset of patients with newly diagnosed multiple myeloma. This dataset contains a variety of categorical and continuous variables. A description of the variables are shown below.</p>
-
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Column
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+ID
+</td>
+<td style="text-align:left;">
+Patient identifier
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sex
+</td>
+<td style="text-align:left;">
+Patient sex
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Race
+</td>
+<td style="text-align:left;">
+Patient race
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Age
+</td>
+<td style="text-align:left;">
+Patient age in years at the time of diagnosis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stage
+</td>
+<td style="text-align:left;">
+Disease stage according to the international staging system
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SurvivalMonths
+</td>
+<td style="text-align:left;">
+Duration in months between diagnosis and the last date of contact
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Status
+</td>
+<td style="text-align:left;">
+Survival status of the patient
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DiagnosisYear
+</td>
+<td style="text-align:left;">
+Year of diagnosis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Treatment
+</td>
+<td style="text-align:left;">
+Initial treatment
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TreatmentDurationMonths
+</td>
+<td style="text-align:left;">
+Duration of the initial treatment in months
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BonyLesions
+</td>
+<td style="text-align:left;">
+Number of bony lesions on initial imaging study (MRI or X-ray)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PlasmaCells
+</td>
+<td style="text-align:left;">
+Percentage of plasma cells on initial bone marrow biopsy
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1q+
+</td>
+<td style="text-align:left;">
+FISH result on initial bone marrow biopsy
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+del13q
+</td>
+<td style="text-align:left;">
+FISH result on initial bone marrow biopsy
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+del17p
+</td>
+<td style="text-align:left;">
+FISH result on initial bone marrow biopsy
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+del1p
+</td>
+<td style="text-align:left;">
+FISH result on initial bone marrow biopsy
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+t(11;14)
+</td>
+<td style="text-align:left;">
+FISH result on initial bone marrow biopsy
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+t(14;16)
+</td>
+<td style="text-align:left;">
+FISH result on initial bone marrow biopsy
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+t(4:14)
+</td>
+<td style="text-align:left;">
+FISH result on initial bone marrow biopsy
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+t(6;14)
+</td>
+<td style="text-align:left;">
+FISH result on initial bone marrow biopsy
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Albumin
+</td>
+<td style="text-align:left;">
+Albumin at the time of diagnosis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B2M
+</td>
+<td style="text-align:left;">
+Beta-2 microglobulin at the time of diagnosis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Calcium
+</td>
+<td style="text-align:left;">
+Calcium at the time of diagnosis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Creatinine
+</td>
+<td style="text-align:left;">
+Creatinine at the time of diagnosis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LightChainRatio
+</td>
+<td style="text-align:left;">
+Involved/uninvolved serum free light chain ratio at the time of diagnosis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hematocrit
+</td>
+<td style="text-align:left;">
+Hematocrit at the time of diagnosis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LDH
+</td>
+<td style="text-align:left;">
+Lactate dehydrogenase at the time of diagnosis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MProtein
+</td>
+<td style="text-align:left;">
+Monoclonal protein at the time of diagnosis
+</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 </div>

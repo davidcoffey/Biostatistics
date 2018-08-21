@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="probability.html">
-<link rel="next" href="hypothesis-testing.html">
+<link rel="prev" href="normal-distribution.html">
+<link rel="next" href="references.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -164,72 +164,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="normal-distribution" class="section level1">
-<h1><span class="header-section-number">Chapter 4</span> Normal distribution</h1>
-<div id="probability-distributions" class="section level2">
-<h2><span class="header-section-number">4.1</span> Probability distributions</h2>
-<p>A probability distribution is a mathematical function that provides the probabilities of occurrence of different possible outcomes. Probability distributions are generally divided into two classes. A <strong>discrete probability distribution</strong> applies to discrete random variables such as the probability of being alive or dead as in the binomial distribution or the probability of a given number of deaths occurring in a fixed time interval as in the Poisson distribution. A <strong>continuous probability distribution</strong> applies to continuous random variables such as the measure of hematocrit on any given day. The most common continuous probability distribution is the normal or Gaussian distribution and is defined by the following probability-density function: <span class="math display">\[f(x)=\frac{1}{\sqrt{2\pi\sigma}}e^{-\frac{1}{2\sigma^{2}}(x-\mu)^{2}}\]</span> where <span class="math inline">\({x}\)</span> is a continuous random variable, <span class="math inline">\({\sigma^{2}}\)</span> is the variance, and <span class="math inline">\({\mu}\)</span> is the mean. Properties of the normal distribution include:</p>
-<ul>
-<li>The curve is symmetric about <span class="math inline">\({\mu}\)</span></li>
-<li>The entire shape of the normal distribution is determined by the two parameters <span class="math inline">\({\mu}\)</span> and <span class="math inline">\({\sigma^{2}}\)</span></li>
-<li>The area under the curve between any two points <span class="math inline">\({a}\)</span> and <span class="math inline">\({b}\)</span> is equal to the probability that the random variable <span class="math inline">\({x}\)</span> falls between <span class="math inline">\({a}\)</span> and <span class="math inline">\({b}\)</span></li>
-<li>The area under the entire normal density function is always equal to 1</li>
-<li>The probability that the random variable <span class="math inline">\({x}\)</span> falls between ±1 standard deviation is approximately 68%, ±2 standard deviations is 95%, and ±2.5 standard deviations is 99%.</li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Calculate the probabilities of a normally distributed random variable</span>
-<span class="kw">library</span>(ggplot2)
-p =<span class="st"> </span><span class="kw">dnorm</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">5</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
-p</code></pre></div>
-<pre><code> [1] 1.338302e-04 4.431848e-03 5.399097e-02 2.419707e-01 3.989423e-01
- [6] 2.419707e-01 5.399097e-02 4.431848e-03 1.338302e-04 1.486720e-06</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="kw">data.frame</span>(<span class="dt">Probability =</span> p, <span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>), <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> Probability)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</code></pre></div>
-<p><img src="Biostatistics_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
-</div>
-<div id="central-limit-theorem" class="section level2">
-<h2><span class="header-section-number">4.2</span> Central limit theorem</h2>
-<p>The central limit theorem establishes that the distribution of sample means of an independent random variable tends toward a normal distribution even if the original variables themselves are not normally distributed. For example, suppose that a sample is obtained containing a large number of observations, each observation being randomly generated in a way that does not depend on the values of the other observations, and that the arithmetic mean of the observed values is computed. If this procedure is performed many times, the central limit theorem says that the computed values of the mean will be distributed according to a normal distribution.</p>
-</div>
-<div id="test-for-normality" class="section level2">
-<h2><span class="header-section-number">4.3</span> Test for normality</h2>
-<p>The Shapiro-Wilk test of normality tests if the population is normally distributed. If the p-value is less than a chosen alpha, then the null hypothesis is rejected and there is evidence that the data tested are <em>not</em> from a normally distributed population. If the p-value is greater than a chosen alpha, then the data <em>may</em> be normally distributed and one cannot reject the hypothesis that the sample comes from a population which has a normal distribution.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Import dataset</span>
-<span class="kw">load</span>(<span class="st">&quot;docs/Example-data.Rda&quot;</span>)
-
-<span class="co"># Shapiro-Wilk test of normality</span>
-<span class="kw">shapiro.test</span>(data<span class="op">$</span>Age)</code></pre></div>
-<pre><code>
-    Shapiro-Wilk normality test
-
-data:  data$Age
-W = 0.93058, p-value = 0.1584</code></pre>
-</div>
-<div id="quantile-quantile-plot" class="section level2">
-<h2><span class="header-section-number">4.4</span> Quantile-quantile plot</h2>
-<p>Quantile-quantile (Q-Q) plot is a probability plot, which is a graphical method for comparing two probability distributions by plotting their quantiles against each other. If the two distributions being compared are similar, the points in the Q–Q plot will approximately lie on the line y = x. If the distributions are linearly related, the points in the Q–Q plot will approximately lie on a line, but not necessarily on the line y = x.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Q-Q plot</span>
-<span class="kw">library</span>(ggplot2)
-<span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">sample =</span> Age)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">stat_qq</span>() <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">stat_qq_line</span>()</code></pre></div>
-<p><img src="Biostatistics_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
-</div>
-<div id="confidence-interval" class="section level2">
-<h2><span class="header-section-number">4.5</span> Confidence interval</h2>
-<p>The interval of plausible estimates of the sample mean is known as the confidence interval. Generally, the interval encompasses 95% of all such sample means. It is calculated from Student’s <span class="math inline">\({t}\)</span> distribution which is a family of distributions indexed by a parameter referred to as the degrees of freedom (<span class="math inline">\({n-1}\)</span>). The upper and lower bounds of the interval are calculated as follows when the standard deviation of the population is unknown: <span class="math display">\[{(\bar{x}-t_{n-1,1-\alpha/2}s/\sqrt{n}, \bar{x}+t_{n-1,1-\alpha/2}s/\sqrt{n})}\]</span> where <span class="math inline">\(t_{n-1,1-\alpha/2}\)</span> is the the percentage points of the <span class="math inline">\({t}\)</span> distribution for a given degree of freedom (<span class="math inline">\({n-1}\)</span>) and percentile (<span class="math inline">\(1-\alpha/2\)</span>). The length of the confidence interval is therefore proportional to the sample size (<span class="math inline">\({n}\)</span>), standard deviation (<span class="math inline">\({s}\)</span>), and confidence (<span class="math inline">\(\alpha\)</span>):</p>
-<ul>
-<li>As the sample size increases, the length of the confidence interval decreases</li>
-<li>As the standard deviation increases, the length of the confidence interval increases</li>
-<li>As the confidence desired increases, the length of the confidence interval increases</li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Determine the confidence interval of the mean from a t distriubtion</span>
-alpha =<span class="st"> </span><span class="fl">0.05</span>
-mean =<span class="st"> </span><span class="kw">mean</span>(data<span class="op">$</span>Age)
-sd =<span class="st"> </span><span class="kw">sd</span>(data<span class="op">$</span>Age)
-n =<span class="st"> </span><span class="kw">length</span>(data<span class="op">$</span>Age)
-CI =<span class="st"> </span><span class="kw">qt</span>(<span class="dt">p =</span> <span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>, <span class="dt">df =</span> n<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>sd<span class="op">/</span><span class="kw">sqrt</span>(n)
-<span class="kw">c</span>(mean <span class="op">-</span><span class="st"> </span>CI, mean <span class="op">+</span><span class="st"> </span>CI)</code></pre></div>
-<pre><code>[1] 54.93078 64.06922</code></pre>
+<div id="hypothesis-testing" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Hypothesis testing</h1>
+<div id="general-concepts" class="section level2">
+<h2><span class="header-section-number">5.1</span> General concepts</h2>
+<p>Hypothesis testing provides an objective framework for making decisions using probabilistic methods, rather than relying on subjective impressions. In a <strong>one-sample problem</strong>, hypotheses are specified about a single distribution; in a <strong>two-sample problem</strong>, two different distributions are compared.</p>
+<p>The <strong>null hypothesis</strong> (<span class="math inline">\({H_0}\)</span>) is the hypothesis that is to be tested. The <strong>alterantive hypothesis</strong> (<span class="math inline">\({H_1}\)</span>) is the hypothesis that contradicts the null hypothesis. If <span class="math inline">\({H_0}\)</span> is true and <span class="math inline">\({H_0}\)</span> is accepted, or if <span class="math inline">\({H_0}\)</span> is true and <span class="math inline">\({H_1}\)</span> is rejected, then the correct decision has been made. If <span class="math inline">\({H_0}\)</span> is true and <span class="math inline">\({H_0}\)</span> is rejected, or if <span class="math inline">\({H_1}\)</span> is true and <span class="math inline">\({H_0}\)</span> is accepted, then an error has been made. A <strong>type I error</strong> occurs when rejecting the null hypothesis when the alternative hypothesis is true (false positive). A <strong>type II error</strong> occurs when accepting the null hypothesis when the alternative hypothesis is true (false negative).</p>
+<p>The probability of a type I error is also referred to as the <strong>signfiance level</strong> <span class="math inline">\({\alpha}\)</span>. The probability of a type II error is denoted by <span class="math inline">\({\beta}\)</span>. The <strong>power</strong> of a test is the probability that the test correctly rejects the null hypothesis when the alternative hypothesis is true and is defined as <span class="math inline">\({1-\beta}\)</span>.</p>
+<p>The general aim in hypothesis testing is to use statistical tests that make <span class="math inline">\({\alpha}\)</span> and <span class="math inline">\({\beta}\)</span> as small as possible. This goal requires compromise because making <span class="math inline">\({\alpha}\)</span> small involves rejecting the null hypothesis less often, whereas making <span class="math inline">\({\beta}\)</span> small involves accepting the null hypothesis less often. That is, as <span class="math inline">\({\alpha}\)</span> decreases, <span class="math inline">\({\beta}\)</span> increases. Our general strategy is to fix <span class="math inline">\({\alpha}\)</span> at some specific level (e.g. 0.05) and to use the test that minimizes <span class="math inline">\({\beta}\)</span> or, equivalently, maximizes the power.</p>
+<p>A <strong>one-tailed test</strong> is a test in which the values of the parameter being studied under the alternative hypothesis are allowed to be either greater than or less than the values of the parameter under the null hypothesis, <em>but not both</em>. A <strong>two-tailed test</strong> is a test in which the values of the parameter being studies under the alternative hypothesis are allowed to be either greater than or less than the values of the parameter under the null hypothesis. A two-tailed test would be preferred over a one-tailed test if no prior knowledge is available about the direction of the alternative hypothesis if the null hypothesis is rejected. However, in certain situations only alternatives on one side of the null mean are of interest or are possible, and in this case a one-sided test is better because it has more power (that is, it is easier to reject the null hypothesis). <em>It is important to decide weather to use a one-sided or two-sided test before data analysis so as to not bias the conclusions.</em></p>
+<p>A <strong>p-value</strong> or probability value is the probability for a given statistical model that, when the null hypothesis is true, the statistical summary (such as the sample mean difference between two compared groups) would be the same as or of greater magnitude than the actual observed results. A p &lt; 0.05 is generally accepted as significant.</p>
 
 </div>
 </div>
@@ -238,8 +182,8 @@ CI =<span class="st"> </span><span class="kw">qt</span>(<span class="dt">p =</sp
           </div>
         </div>
       </div>
-<a href="probability.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="hypothesis-testing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="normal-distribution.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
